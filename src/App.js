@@ -88,7 +88,6 @@ class App extends Component {
             )}
           />
           <Route
-            user={user}
             path='/books'
             component={GetBooks}/>
         </main>

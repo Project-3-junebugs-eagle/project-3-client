@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { getBooks } from '../api/auth'
-import apiUrl from '../apiConfig'
 
 export default class GetBooks extends Component {
   constructor (props) {
@@ -11,10 +10,7 @@ export default class GetBooks extends Component {
   }
 
   componentDidMount () {
-    getBooks({
-      url: apiUrl + '/books',
-      method: 'GET'
-    })
+    getBooks()
       .then((response) => {
         this.setState({
           books: response.data.books
@@ -24,14 +20,13 @@ export default class GetBooks extends Component {
   }
 
   render () {
-    const books = this.state.books.map(book => (
-      <li key={book._id}>
-        {console.log(book)}
-      </li>
-    ))
     return (
       <div>
-        <p>{books}</p>
+        {this.state.books.map((book) => (
+          <li key={book._id}>
+            {book.title}
+          </li>
+        ))}
       </div>
     )
   }
