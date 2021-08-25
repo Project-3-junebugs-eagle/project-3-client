@@ -2,9 +2,10 @@
 // - React, Component
 import React, { Component } from 'react'
 // - Link
-import { Link, withRouter } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 // - indexMovies (or something) (api function)
 import { indexMovies } from '../api/auth'
+import { Card, Button } from 'react-bootstrap'
 // - optional messages
 
 // Create a new class inherits from Component
@@ -30,6 +31,11 @@ class IndexMovies extends Component {
 
   // - render - display the movies in the state (optionally: loading message)
   render () {
+    const cardContainerLayout = {
+      display: 'flex',
+      justifyContent: 'center',
+      flexFlow: 'row wrap'
+    }
     const { movies } = this.state
     // This is what prevents the "cannot read property map of undefined" or other similar errors because on the first render, `movies` state will be `null`
     if (movies === null) {
@@ -42,18 +48,21 @@ class IndexMovies extends Component {
     } else {
       // I want movieJsx to be a bunch of li or Link or something with all my movies info in them
       // .map gives us back a new array that we can display
-      movieJsx = movies.map(movie => (
-        <li key={movie.title}>
-          <Link to={`/movies/${movie.title}`}>{movie.title}</Link>
-        </li>
+      movieJsx = movies.map((movie) => (
+        <Card key={movie.id} style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>{movie.title}</Card.Title>
+            <Card.Text>{movie.description}</Card.Text>
+            <Button className="button">Purchase ${movie.price} </Button>
+          </Card.Body>
+        </Card>
       ))
     }
 
     return (
-      <>
-        <h3>All The Movies:</h3>
+      <div style={cardContainerLayout}>
         {movieJsx}
-      </>
+      </div>
     )
   }
 }
