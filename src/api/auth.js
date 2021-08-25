@@ -59,13 +59,3 @@ export const getBooks = (user) => {
     method: 'GET'
   })
 }
-
-export const indexMovies = (user) => {
-  return axios({
-    method: 'GET',
-    url: apiUrl + '/movies',
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
-  })
-}
