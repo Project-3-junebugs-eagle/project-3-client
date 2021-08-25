@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 import React, { Component } from 'react'
 import { indexPurchase, refundPurchase } from '../../api/purchases'
 import { withRouter } from 'react-router-dom'
@@ -57,6 +58,7 @@ class IndexPurchase extends Component {
       flexFlow: 'row wrap'
     }
     const { movies } = this.state
+    const { history } = this.props
     // This is what prevents the "cannot read property map of undefined" or other similar errors because on the first render, `movies` state will be `null`
     if (movies === null) {
       return 'Loading...'
@@ -73,8 +75,13 @@ class IndexPurchase extends Component {
           <Card.Body>
             <Card.Title>{purchase.title}</Card.Title>
             <Card.Text>{purchase.description}</Card.Text>
-            <Button>Review</Button>
-            <Button data-id={purchase._id} onClick={this.handleClick}>Refund</Button>
+            <Button
+              onClick={() => history.push(`/purchases/${purchase._id}/review`)}>
+							Review
+            </Button>
+            <Button data-id={purchase._id} onClick={this.handleClick}>
+							Refund
+            </Button>
           </Card.Body>
         </Card>
       ))
