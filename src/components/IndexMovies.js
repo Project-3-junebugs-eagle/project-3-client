@@ -29,6 +29,14 @@ class IndexMovies extends Component {
       .catch(err => msgAlert({ heading: 'Index failed :(', message: 'Something went wrong: ' + err.message, variant: 'danger' }))
   }
 
+  // on click function for the button
+  handleClick = (event) => {
+    event.preventDefault()
+    console.log(event.target.attributes.getNamedItem('data-title').value)
+    console.log(event.target.attributes.getNamedItem('data-description').value)
+    console.log(event.target.attributes.getNamedItem('data-price').value)
+  }
+
   // - render - display the movies in the state (optionally: loading message)
   render () {
     const cardContainerLayout = {
@@ -53,7 +61,7 @@ class IndexMovies extends Component {
           <Card.Body>
             <Card.Title>{movie.title}</Card.Title>
             <Card.Text>{movie.description}</Card.Text>
-            <Button className="button">Purchase ${movie.price} </Button>
+            <Button onClick={this.handleClick} data-title={movie.title} data-description={movie.description} data-price={movie.price} className="button">Purchase ${movie.price} </Button>
           </Card.Body>
         </Card>
       ))
