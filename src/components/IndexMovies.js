@@ -4,8 +4,9 @@ import React, { Component } from 'react'
 // - Link
 import { withRouter } from 'react-router-dom'
 // - indexMovies (or something) (api function)
-import { indexMovies } from '../api/auth'
+import { indexMovies } from '../api/movies'
 import { Card, Button } from 'react-bootstrap'
+import { createPurchase } from '../api/purchases'
 // - optional messages
 
 // Create a new class inherits from Component
@@ -31,10 +32,14 @@ class IndexMovies extends Component {
 
   // on click function for the button
   handleClick = (event) => {
+    const { user, msgAlert } = this.props
     event.preventDefault()
-    console.log(event.target.attributes.getNamedItem('data-title').value)
-    console.log(event.target.attributes.getNamedItem('data-description').value)
-    console.log(event.target.attributes.getNamedItem('data-price').value)
+    const movieData = {
+      title: event.target.attributes.getNamedItem('data-title').value,
+      description: event.target.attributes.getNamedItem('data-description').value,
+      price: event.target.attributes.getNamedItem('data-price').value
+    }
+    createPurchase(movieData, user, msgAlert)
   }
 
   // - render - display the movies in the state (optionally: loading message)
