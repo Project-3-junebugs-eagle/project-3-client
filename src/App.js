@@ -89,7 +89,7 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            path='/movies'
+            exact path='/movies'
             render={() => (
               <IndexMovies msgAlert={this.msgAlert} user={user}/>)}/>
         </main>
