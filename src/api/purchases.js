@@ -19,3 +19,13 @@ export const indexPurchase = (user) => {
     }
   })
 }
+
+export const refundPurchase = (id, user) => {
+  return axios({
+    url: apiUrl + '/purchases/' + id,
+    method: 'delete',
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
