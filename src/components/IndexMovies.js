@@ -1,3 +1,4 @@
+/* eslint-disable no-tabs */
 // Imports:
 // - React, Component
 import React, { Component } from 'react'
@@ -36,10 +37,25 @@ class IndexMovies extends Component {
     event.preventDefault()
     const movieData = {
       title: event.target.attributes.getNamedItem('data-title').value,
-      description: event.target.attributes.getNamedItem('data-description').value,
+      description:
+			event.target.attributes.getNamedItem('data-description').value,
       price: event.target.attributes.getNamedItem('data-price').value
     }
     createPurchase(movieData, user, msgAlert)
+      .then(() =>
+        msgAlert({
+          heading: 'Purchase success',
+          message: 'Here are your purchases',
+          variant: 'success'
+        })
+      )
+      .catch((err) =>
+        msgAlert({
+          heading: 'Purchase failed :(',
+          message: 'Something went wrong: ' + err.message,
+          variant: 'danger'
+        })
+      )
   }
 
   // - render - display the movies in the state (optionally: loading message)

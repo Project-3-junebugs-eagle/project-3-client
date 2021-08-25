@@ -11,6 +11,7 @@ import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import IndexMovies from './components/IndexMovies'
+import IndexPurchase from './components/purchases/IndexPurchase'
 
 class App extends Component {
   constructor (props) {
@@ -45,8 +46,8 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header user={user} />
-	      {msgAlerts.map((msgAlert) => (
+        <Header user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -56,8 +57,8 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
-	        <Route
+        <main className='container'>
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -89,9 +90,15 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            exact path='/movies'
-            render={() => (
-              <IndexMovies msgAlert={this.msgAlert} user={user}/>)}/>
+            exact
+            path='/movies'
+            render={() => <IndexMovies msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact path='/purchases'
+            render={() => <IndexPurchase msgAlert={this.msgAlert} user={user} />}
+          />
         </main>
       </Fragment>
     )
