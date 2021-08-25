@@ -29,3 +29,22 @@ export const refundPurchase = (id, user) => {
     }
   })
 }
+export const reviewMovie = (data, id, user) => {
+  return axios({
+    url: apiUrl + '/purchases/' + id,
+    method: 'patch',
+    data: { purchase: data },
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}
+export const getPurchase = (id, user) => {
+  return axios({
+    url: apiUrl + '/purchases/' + id,
+    method: 'get',
+    headers: {
+      Authorization: `Bearer ${user.token}`
+    }
+  })
+}

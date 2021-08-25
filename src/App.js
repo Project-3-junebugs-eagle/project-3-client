@@ -12,13 +12,15 @@ import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
 import IndexMovies from './components/IndexMovies'
 import IndexPurchase from './components/purchases/IndexPurchase'
+import UpdatePurchase from './components/purchases/UpdatePurchase'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      purchases: []
     }
   }
 
@@ -96,8 +98,19 @@ class App extends Component {
           />
           <AuthenticatedRoute
             user={user}
-            exact path='/purchases'
-            render={() => <IndexPurchase msgAlert={this.msgAlert} user={user} />}
+            exact
+            path='/purchases'
+            render={() => (
+              <IndexPurchase msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/purchases/:id/review'
+            render={() => (
+              <UpdatePurchase msgAlert={this.msgAlert} user={user} />
+            )}
           />
         </main>
       </Fragment>
