@@ -10,13 +10,18 @@ import SignUp from './components/auth/SignUp'
 import SignIn from './components/auth/SignIn'
 import SignOut from './components/auth/SignOut'
 import ChangePassword from './components/auth/ChangePassword'
+import IndexMovies from './components/IndexMovies'
+import IndexPurchase from './components/purchases/IndexPurchase'
+import UpdatePurchase from './components/purchases/UpdatePurchase'
+import IndexMoviesUnauth from './components/IndexMoviesUnauth'
 
 class App extends Component {
   constructor (props) {
     super(props)
     this.state = {
       user: null,
-      msgAlerts: []
+      msgAlerts: [],
+      purchases: []
     }
   }
 
@@ -44,8 +49,8 @@ class App extends Component {
 
     return (
       <Fragment>
-	      <Header user={user} />
-	      {msgAlerts.map((msgAlert) => (
+        <Header user={user} />
+        {msgAlerts.map((msgAlert) => (
           <AutoDismissAlert
             key={msgAlert.id}
             heading={msgAlert.heading}
@@ -55,8 +60,8 @@ class App extends Component {
             deleteAlert={this.deleteAlert}
           />
         ))}
-	      <main className='container'>
-	        <Route
+        <main className='container'>
+          <Route
             path='/sign-up'
             render={() => (
               <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
@@ -85,6 +90,33 @@ class App extends Component {
             render={() => (
               <ChangePassword msgAlert={this.msgAlert} user={user} />
             )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/movies'
+            render={() => <IndexMovies msgAlert={this.msgAlert} user={user} />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/purchases'
+            render={() => (
+              <IndexPurchase msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <AuthenticatedRoute
+            user={user}
+            exact
+            path='/purchases/:id/review'
+            render={() => (
+              <UpdatePurchase msgAlert={this.msgAlert} user={user} />
+            )}
+          />
+          <Route
+            exact
+            path='/'
+            render={() => <IndexMoviesUnauth />}
           />
         </main>
       </Fragment>

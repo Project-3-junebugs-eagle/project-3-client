@@ -1,6 +1,6 @@
 {
-  "homepage": "http://<git-name>.github.io/<repo-name>",
-  "name": "react-auth-template",
+  "homepage": "http://eagles.github.io/project3",
+  "name": "cine-buster",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -22,11 +22,13 @@
     "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.3",
+    "react-stripe-checkout": "^2.6.3",
     "resolve": "^1.18.1",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
     "start": "PORT=7165 react-scripts start",
+    "start-windows": "set PORT=7165 && react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",

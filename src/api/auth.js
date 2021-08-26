@@ -53,3 +53,9 @@ export const changePassword = (passwords, user) => {
     }
   })
 }
+export const getBooks = (user) => {
+  return axios({
+    url: apiUrl + '/books',
+    method: 'GET'
+  })
+}
