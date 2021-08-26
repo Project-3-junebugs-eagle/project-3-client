@@ -8,6 +8,8 @@ import { withRouter } from 'react-router-dom'
 import { indexMovies } from '../api/movies'
 import { Card, Button } from 'react-bootstrap'
 import { createPurchase } from '../api/purchases'
+import Checkout from './stripe/Checkout'
+
 // - optional messages
 
 // Create a new class inherits from Component
@@ -83,6 +85,11 @@ class IndexMovies extends Component {
             <Card.Title>{movie.title}</Card.Title>
             <Card.Text>{movie.description}</Card.Text>
             <Button onClick={this.handleClick} data-title={movie.title} data-description={movie.description} data-price={movie.price} className="button">Purchase ${movie.price} </Button>
+            <Checkout
+              name={movie.title}
+              description={movie.price}
+              amount={movie.price}
+            />
           </Card.Body>
         </Card>
       ))
