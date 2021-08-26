@@ -13,7 +13,7 @@ const authenticatedOptions = (
 			Sign Out
     </NavLink>
     <NavLink to='/purchases' className='nav-link'>
-			My purchases
+			My Purchases
     </NavLink>
     {/* <NavLink to='/movies' className='nav-link'>Movies</NavLink> */}
   </Fragment>
