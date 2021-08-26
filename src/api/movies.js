@@ -1,11 +1,8 @@
 import apiUrl from '../apiConfig'
 import axios from 'axios'
-export const indexMovies = (user) => {
+export const indexMovies = () => {
   return axios({
     method: 'GET',
-    url: apiUrl + '/movies',
-    headers: {
-      Authorization: `Bearer ${user.token}`
-    }
+    url: apiUrl + '/movies'
   })
 }

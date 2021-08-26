@@ -13,7 +13,7 @@ import ChangePassword from './components/auth/ChangePassword'
 import IndexMovies from './components/IndexMovies'
 import IndexPurchase from './components/purchases/IndexPurchase'
 import UpdatePurchase from './components/purchases/UpdatePurchase'
-// import Checkout from './components/stripe/Checkout'
+import IndexMoviesUnauth from './components/IndexMoviesUnauth'
 
 class App extends Component {
   constructor (props) {
@@ -113,11 +113,11 @@ class App extends Component {
               <UpdatePurchase msgAlert={this.msgAlert} user={user} />
             )}
           />
-          {/* <Checkout
-            name={'The Road to learn React'}
-            description={'Only the Book'}
-            amount={1}
-          /> */}
+          <Route
+            exact
+            path='/'
+            render={() => <IndexMoviesUnauth />}
+          />
         </main>
       </Fragment>
     )
