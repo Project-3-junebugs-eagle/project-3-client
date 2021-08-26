@@ -23,6 +23,7 @@ const unauthenticatedOptions = (
   <Fragment>
     <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
     <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
+    {/* <NavLink to='/cinebuster-movies' className='nav-link'>Movies</NavLink> */}
   </Fragment>
 )
 

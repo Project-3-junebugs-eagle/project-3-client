@@ -26,8 +26,8 @@ class IndexMovies extends Component {
 
   // - lifecycle method (right away when this component renders, make a request for all the movies & put em in state)
   componentDidMount () {
-    const { user, msgAlert } = this.props
-    indexMovies(user)
+    const { msgAlert } = this.props
+    indexMovies()
       .then(res => this.setState({ movies: res.data.movies }))
       .then(() => msgAlert({ heading: 'Index success', message: 'Here\'s the movies', variant: 'success' }))
       .catch(err => msgAlert({ heading: 'Index failed :(', message: 'Something went wrong: ' + err.message, variant: 'danger' }))
