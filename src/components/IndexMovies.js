@@ -8,7 +8,6 @@ import { withRouter } from 'react-router-dom'
 import { indexMovies } from '../api/movies'
 import { Card, Button } from 'react-bootstrap'
 import { createPurchase } from '../api/purchases'
-import Checkout from './stripe/Checkout'
 
 // - optional messages
 
@@ -84,12 +83,15 @@ class IndexMovies extends Component {
           <Card.Body>
             <Card.Title>{movie.title}</Card.Title>
             <Card.Text>{movie.description}</Card.Text>
-            <Button onClick={this.handleClick} data-title={movie.title} data-description={movie.description} data-price={movie.price} className="button">Purchase ${movie.price} </Button>
-            <Checkout
-              name={movie.title}
-              description={movie.price}
-              amount={movie.price}
-            />
+            <Button
+              onClick={this.handleClick}
+              data-title={movie.title}
+              data-description={movie.description}
+              data-price={movie.price}
+              className='button'>
+							Add to cart{' '}
+            </Button>
+            <Card.Text>${movie.price}</Card.Text>
           </Card.Body>
         </Card>
       ))
