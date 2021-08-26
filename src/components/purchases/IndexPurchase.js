@@ -83,12 +83,7 @@ class IndexPurchase extends Component {
             <Button data-id={purchase._id} onClick={this.handleClick}>
 							Refund
             </Button>
-            <Card.Text>Review: {purchase.review}</Card.Text>
-            <Checkout
-              name={purchase.title}
-              description={purchase.price}
-              amount={purchase.price}
-            />
+            <Card.Text>{purchase.review}</Card.Text>
           </Card.Body>
         </Card>
       ))
