@@ -16,7 +16,7 @@ const authenticatedOptions = (
     <NavLink to='/purchases' className='nav-link'>
 			My Purchases
     </NavLink>
-    {/* <NavLink to='/movies' className='nav-link'>Movies</NavLink> */}
+    <NavLink to='/cart' className='nav-link'>My Cart</NavLink>
   </Fragment>
 )
 
