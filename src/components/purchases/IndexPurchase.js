@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { indexPurchase, refundPurchase } from '../../api/purchases'
 import { withRouter } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
+import Checkout from '../stripe/Checkout'
 
 class IndexPurchase extends Component {
   constructor (props) {
@@ -82,7 +83,7 @@ class IndexPurchase extends Component {
             <Button data-id={purchase._id} onClick={this.handleClick}>
 							Refund
             </Button>
-            <Card.Text>Review: {purchase.review}</Card.Text>
+            <Card.Text>{purchase.review}</Card.Text>
           </Card.Body>
         </Card>
       ))

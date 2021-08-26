@@ -3,6 +3,7 @@ import React, { Fragment } from 'react'
 import Nav from 'react-bootstrap/Nav'
 import Navbar from 'react-bootstrap/Navbar'
 import { Link, NavLink } from 'react-router-dom'
+import logo1 from '../../logo1.png'
 
 const authenticatedOptions = (
   <Fragment>
@@ -13,7 +14,7 @@ const authenticatedOptions = (
 			Sign Out
     </NavLink>
     <NavLink to='/purchases' className='nav-link'>
-			My purchases
+			My Purchases
     </NavLink>
     {/* <NavLink to='/movies' className='nav-link'>Movies</NavLink> */}
   </Fragment>
@@ -36,6 +37,7 @@ const alwaysOptions = (
 const Header = ({ user }) => (
   <Navbar bg='primary' variant='dark' expand='md'>
     <Navbar.Brand>
+      <img src={logo1} alt="Logo" />
       <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>Cinebuster</Link>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls='basic-navbar-nav' />

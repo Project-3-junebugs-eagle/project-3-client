@@ -7,7 +7,7 @@ const ReviewForm = ({ purchase, handleSubmit, handleChange }) => (
   <Form onSubmit={handleSubmit}>
     <Form.Group controlId='title'>
       <Form.Control
-        size='lg'
+        as="textarea"
         required
         name='review'
         value={purchase.review}
