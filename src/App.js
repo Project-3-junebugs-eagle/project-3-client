@@ -14,6 +14,7 @@ import IndexMovies from './components/IndexMovies'
 import IndexPurchase from './components/purchases/IndexPurchase'
 import UpdatePurchase from './components/purchases/UpdatePurchase'
 import IndexMoviesUnauth from './components/IndexMoviesUnauth'
+import ShowCart from './components/carts/ShowCart'
 
 class App extends Component {
   constructor (props) {
@@ -117,6 +118,13 @@ class App extends Component {
             exact
             path='/'
             render={() => <IndexMoviesUnauth />}
+          />
+          <AuthenticatedRoute
+            user={user}
+            path='/cart'
+            render={() => (
+              <ShowCart msgAlert={this.msgAlert} user={user} />
+            )}
           />
         </main>
       </Fragment>

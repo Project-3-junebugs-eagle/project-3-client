@@ -7,7 +7,8 @@ import { withRouter } from 'react-router-dom'
 // - indexMovies (or something) (api function)
 import { indexMovies } from '../api/movies'
 import { Card, Button } from 'react-bootstrap'
-import { createPurchase } from '../api/purchases'
+// import { createPurchase } from '../api/purchases'
+import { addToCart } from '../api/cart'
 
 // - optional messages
 
@@ -42,11 +43,11 @@ class IndexMovies extends Component {
 			event.target.attributes.getNamedItem('data-description').value,
       price: event.target.attributes.getNamedItem('data-price').value
     }
-    createPurchase(movieData, user, msgAlert)
+    addToCart(movieData, user, msgAlert)
       .then(() =>
         msgAlert({
-          heading: 'Purchase success',
-          message: 'Here are your purchases',
+          heading: 'Item added to cart',
+          message: 'Item has been added to your cart.',
           variant: 'success'
         })
       )
