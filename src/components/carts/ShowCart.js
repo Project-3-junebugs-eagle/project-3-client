@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { removeFromCart, showCart } from '../../api/cart'
 import { withRouter } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
+import Checkout from '../stripe/Checkout'
 
 class ShowCart extends Component {
   constructor (props) {
@@ -52,6 +53,7 @@ class ShowCart extends Component {
   }
 
   render () {
+    console.log(this.state.carts)
     const cardContainerLayout = {
       display: 'flex',
       justifyContent: 'center',
@@ -75,7 +77,7 @@ class ShowCart extends Component {
             <Card.Title>{cart.title}</Card.Title>
             <Card.Text>{cart.description}</Card.Text>
             <Button data-id={cart._id} onClick={this.handleClick}>
-    						Refund
+    						Remove from cart
             </Button>
           </Card.Body>
         </Card>
@@ -83,8 +85,15 @@ class ShowCart extends Component {
     }
 
     return (
-      <div style={cardContainerLayout}>
-        {cartJsx}
+      <div>
+        <div style={cardContainerLayout}>
+          {cartJsx}
+        </div>
+        <Checkout
+          name={'Thanks for your purchase.'}
+          description={'Please enter your payment information below'}
+          amount={1}
+        />
       </div>
     )
   }
