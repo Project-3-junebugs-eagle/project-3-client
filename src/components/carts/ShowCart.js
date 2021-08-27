@@ -80,9 +80,9 @@ class ShowCart extends Component {
         <Card key={cart.id} style={{ width: '18rem' }}>
           <Card.Body>
             <Card.Title>{cart.title}</Card.Title>
-            <Card.Text>{cart.description}</Card.Text>
+            <Card.Text>${cart.price}</Card.Text>
             <Button data-id={cart._id} onClick={this.handleClick}>
-    						Remove from cart
+							Remove from cart
             </Button>
           </Card.Body>
         </Card>
