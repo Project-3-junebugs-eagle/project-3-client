@@ -35,7 +35,7 @@ const alwaysOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg='primary' variant='dark' expand='md'>
+  <Navbar bg='dark' variant='dark' expand='md'>
     <Navbar.Brand>
       <img src={logo1} alt="Logo" />
       <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>Cinebuster</Link>
