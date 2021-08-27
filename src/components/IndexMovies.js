@@ -82,8 +82,12 @@ class IndexMovies extends Component {
       movieJsx = movies.map((movie) => (
         <Card key={movie.id} style={{ width: '18rem' }}>
           <Card.Body>
+            <Card.Img variant='top' src={movie.imgUrl} />
             <Card.Title>{movie.title}</Card.Title>
             <Card.Text>{movie.description}</Card.Text>
+            <Card.Text>
+              <strong>${movie.price}</strong>
+            </Card.Text>
             <Button
               onClick={this.handleClick}
               data-title={movie.title}
@@ -92,7 +96,6 @@ class IndexMovies extends Component {
               className='button'>
 							Add to cart{' '}
             </Button>
-            <Card.Text>${movie.price}</Card.Text>
           </Card.Body>
         </Card>
       ))

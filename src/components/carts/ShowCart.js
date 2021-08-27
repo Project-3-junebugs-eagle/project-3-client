@@ -3,6 +3,7 @@ import React, { Component } from 'react'
 import { removeFromCart, showCart } from '../../api/cart'
 import { withRouter } from 'react-router-dom'
 import { Card, Button } from 'react-bootstrap'
+import Checkout from '../stripe/Checkout'
 
 class ShowCart extends Component {
   constructor (props) {
@@ -52,6 +53,12 @@ class ShowCart extends Component {
   }
 
   render () {
+    const cartArr = this.state.carts
+    let sum = 0
+    for (let i = 0; i < cartArr.length; i++) {
+      const itemPrice = cartArr[i].price
+      sum += itemPrice
+    }
     const cardContainerLayout = {
       display: 'flex',
       justifyContent: 'center',
@@ -73,9 +80,9 @@ class ShowCart extends Component {
         <Card key={cart.id} style={{ width: '18rem' }}>
           <Card.Body>
             <Card.Title>{cart.title}</Card.Title>
-            <Card.Text>{cart.description}</Card.Text>
+            <Card.Text>${cart.price}</Card.Text>
             <Button data-id={cart._id} onClick={this.handleClick}>
-    						Refund
+							Remove from cart
             </Button>
           </Card.Body>
         </Card>
@@ -83,8 +90,17 @@ class ShowCart extends Component {
     }
 
     return (
-      <div style={cardContainerLayout}>
-        {cartJsx}
+      <div>
+        <div style={cardContainerLayout}>
+          {cartJsx}
+        </div>
+        <Checkout
+          user={this.props.user}
+          cart={this.state.carts}
+          name={'Thanks for your purchase.'}
+          description={'Please enter your payment information below'}
+          amount={sum}
+        />
       </div>
     )
   }

@@ -7,41 +7,48 @@ import logo1 from '../../logo1.png'
 
 const authenticatedOptions = (
   <Fragment>
+    <NavLink to='/purchases' className='nav-link'>
+			My Purchases
+    </NavLink>
+    <NavLink to='/cart' className='nav-link'>
+			My Cart
+    </NavLink>
     <NavLink to='/change-password' className='nav-link'>
 			Change Password
     </NavLink>
     <NavLink to='/sign-out' className='nav-link'>
 			Sign Out
     </NavLink>
-    <NavLink to='/purchases' className='nav-link'>
-			My Purchases
-    </NavLink>
-    <NavLink to='/cart' className='nav-link'>My Cart</NavLink>
   </Fragment>
 )
 
 const unauthenticatedOptions = (
   <Fragment>
-    <NavLink to='/sign-up' className='nav-link'>Sign Up</NavLink>
-    <NavLink to='/sign-in' className='nav-link'>Sign In</NavLink>
+    <NavLink to='/sign-up' className='nav-link' id='float'>Sign Up</NavLink>
+    <NavLink to='/sign-in' className='nav-link' id='float'>Sign In</NavLink>
     {/* <NavLink to='/cinebuster-movies' className='nav-link'>Movies</NavLink> */}
   </Fragment>
 )
 
 const alwaysOptions = (
   <Fragment>
-    <NavLink exact to='/movies' className='nav-link'>Home</NavLink>
+    <NavLink
+      exact
+      to='/movies'
+      className='nav-link'>
+			Home
+    </NavLink>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar bg='primary' variant='dark' expand='md'>
+  <Navbar bg='dark' variant='dark' expand='md'>
     <Navbar.Brand>
-      <img src={logo1} alt="Logo" />
-      <Link to='/' style={{ color: '#FFF', textDecoration: 'none' }}>Cinebuster</Link>
+      <img className="logo" src={logo1} alt="Logo" />
+      <Link to='/' style={{ color: '#FFFF', textDecoration: 'none' }}>Cinebuster</Link>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls='basic-navbar-nav' />
-    <Navbar.Collapse id='basic-navbar-nav'>
+    <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
       <Nav className='ml-auto'>
         {user && (
           <span className='navbar-text mr-2'>Welcome, {user.email}</span>
