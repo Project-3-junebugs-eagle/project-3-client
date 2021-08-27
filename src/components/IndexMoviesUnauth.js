@@ -47,22 +47,22 @@ class IndexMoviesUnauth extends Component {
 	    // I want movieJsx to be a bunch of li or Link or something with all my movies info in them
 	    // .map gives us back a new array that we can display
 	    movieJsx = movies.map((movie) => (
-	      <Card key={movie.id} style={{ width: '18rem' }}>
-	        <Card.Body>
-	          <Card.Title>{movie.title}</Card.Title>
-	          <Card.Text>{movie.description}</Card.Text>
-	        </Card.Body>
-	      </Card>
-	    ))
+        <Card key={movie.id} style={{ width: '18rem' }}>
+          <Card.Body>
+            <Card.Title>{movie.title}</Card.Title>
+            <Card.Img variant='top' src={movie.imgUrl} />
+            <Card.Text>{movie.description}</Card.Text>
+          </Card.Body>
+        </Card>
+      ))
 	  }
 
 	  return (
-	    <>
-	      <h3>Sign in to purchase a movie</h3>
-	      <div style={cardContainerLayout}>
-	    {movieJsx}
-	  </div>
-	    </>)
+      <>
+        <h3>Sign in to purchase a movie</h3>
+        <div style={cardContainerLayout}>{movieJsx}</div>
+      </>
+    )
   }
 }
 
