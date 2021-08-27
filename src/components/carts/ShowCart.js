@@ -95,6 +95,8 @@ class ShowCart extends Component {
           {cartJsx}
         </div>
         <Checkout
+          user={this.props.user}
+          cart={this.state.carts}
           name={'Thanks for your purchase.'}
           description={'Please enter your payment information below'}
           amount={sum}
