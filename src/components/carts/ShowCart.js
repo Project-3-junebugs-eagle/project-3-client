@@ -53,7 +53,12 @@ class ShowCart extends Component {
   }
 
   render () {
-    console.log(this.state.carts)
+    const cartArr = this.state.carts
+    let sum = 0
+    for (let i = 0; i < cartArr.length; i++) {
+      const itemPrice = cartArr[i].price
+      sum += itemPrice
+    }
     const cardContainerLayout = {
       display: 'flex',
       justifyContent: 'center',
@@ -92,7 +97,7 @@ class ShowCart extends Component {
         <Checkout
           name={'Thanks for your purchase.'}
           description={'Please enter your payment information below'}
-          amount={1}
+          amount={sum}
         />
       </div>
     )
