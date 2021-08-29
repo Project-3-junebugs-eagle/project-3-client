@@ -114,17 +114,11 @@ class App extends Component {
               <UpdatePurchase msgAlert={this.msgAlert} user={user} />
             )}
           />
-          <Route
-            exact
-            path='/'
-            render={() => <IndexMoviesUnauth />}
-          />
+          <Route exact path='/' render={() => <IndexMoviesUnauth />} />
           <AuthenticatedRoute
             user={user}
             path='/cart'
-            render={() => (
-              <ShowCart msgAlert={this.msgAlert} user={user} />
-            )}
+            render={() => <ShowCart msgAlert={this.msgAlert} user={user} />}
           />
         </main>
       </Fragment>

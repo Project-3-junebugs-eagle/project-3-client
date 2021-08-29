@@ -45,13 +45,13 @@ const Header = ({ user }) => (
   <Navbar bg='dark' variant='dark' expand='md'>
     <Navbar.Brand>
       <img className="logo" src={logo1} alt="Logo" />
-      <Link to='/' style={{ color: '#FFFF', textDecoration: 'none' }}>Cinebuster</Link>
+      <Link className='header' to='/' style={{ color: '#FFFF', textDecoration: 'none' }}>Cinebuster</Link>
     </Navbar.Brand>
     <Navbar.Toggle aria-controls='basic-navbar-nav' />
     <Navbar.Collapse id='basic-navbar-nav' className='justify-content-end'>
       <Nav className='ml-auto'>
         {user && (
-          <span className='navbar-text mr-2'>Welcome, {user.email}</span>
+          <span id='welcome-nav-bar' className='navbar-text mr-2'>Welcome, {user.email}</span>
         )}
         {alwaysOptions}
         {user ? authenticatedOptions : unauthenticatedOptions}
