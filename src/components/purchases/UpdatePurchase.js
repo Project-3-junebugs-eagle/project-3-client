@@ -26,8 +26,8 @@ class UpdatePurchase extends Component {
       .then(() => console.log(this.state))
       .then(() =>
         msgAlert({
-          heading: 'Show movie success',
-          message: 'Check out the movie',
+          heading: 'Write a review',
+          message: 'Review your movie here',
           variant: 'success'
         })
       )

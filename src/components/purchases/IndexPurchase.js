@@ -31,7 +31,7 @@ class IndexPurchase extends Component {
       .then(() =>
         msgAlert({
           heading: 'Refund success',
-          message: 'You should get your money back whenever we feel like it.',
+          message: 'You should get your money back within 5 business day.',
           variant: 'success'
         })
       )
@@ -45,7 +45,7 @@ class IndexPurchase extends Component {
       .catch((err) =>
         msgAlert({
           heading: 'Refund failed :(',
-          message: 'No refund for you: ' + err.message,
+          message: 'Unable to refund you at the moment. Try again later. ' + err.message,
           variant: 'danger'
         })
       )
@@ -71,25 +71,27 @@ class IndexPurchase extends Component {
       // I want movieJsx to be a bunch of li or Link or something with all my movies info in them
       // .map gives us back a new array that we can display
       purchaseJsx = this.state.purchases.map((purchase) => (
-        <Card key={purchase.id} style={{ width: '18rem' }}>
+        <Card key={purchase.id} style={{ width: '18rem', marginTop: '40px' }}>
+          <Card.Body></Card.Body>
           <Card.Body>
             <Card.Title>{purchase.title}</Card.Title>
             <Card.Text>{purchase.description}</Card.Text>
             <Button
+              style={{ margin: '10px', alignItems: 'center' }}
               onClick={() => history.push(`/purchases/${purchase._id}/review`)}>
 							Review
             </Button>
             <Button data-id={purchase._id} onClick={this.handleClick}>
 							Refund
             </Button>
-            <Card.Text>{purchase.review}</Card.Text>
+            <Card.Text style={{ fontFamily: 'Satisfy', fontSize: '25px' }}>{purchase.review}</Card.Text>
           </Card.Body>
         </Card>
       ))
     }
 
     return (
-      <div style={cardContainerLayout}>
+      <div className='movie-text' style={cardContainerLayout}>
         {purchaseJsx}
       </div>
     )
