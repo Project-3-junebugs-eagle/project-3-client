@@ -12,7 +12,7 @@ After 'buying' a movie, users can get a refund for it. They can also write a rev
 
 ## Technologies used
  
- FRONT END:
+ #### FRONT END:
  1. React
  2. JavaScript
  3. Bootstrap 
@@ -21,7 +21,7 @@ After 'buying' a movie, users can get a refund for it. They can also write a rev
  6. Stripe
 
 
-BACK END:
+#### BACK END:
 1. MongoDB
 2. Mongoose
 3. Express
@@ -31,12 +31,15 @@ BACK END:
 
 ## Deployed sites
 
-[Front end](https://project-3-junebugs-eagle.github.io/project-3-client/)
-[Back end - Heroku]() 
+[Front end deployed](https://project-3-junebugs-eagle.github.io/project-3-client/)
 
-## Back end repo link
+[Back end - Heroku](https://git.heroku.com/secure-taiga-59525.git) 
 
-[Back end repo]()
+## Back end and front end repo links
+
+[Back end repo](https://github.com/Project-3-junebugs-eagle/Cine-Buster/settings/pages)
+
+[Front end repo](https://github.com/Project-3-junebugs-eagle/project-3-client)
 
 ## Wireframe
 
@@ -72,12 +75,17 @@ BACK END:
 2. As a user, I can rate a title in the store and it goes towards an averaged rating
    
 ### Problems to be solved in future iterations
-1. 
+1. Movie pictures are only being displayed in 'Home'. For future iterations, we want to display the pictures in the cart and 'My purchases' so users can see them there as well.
+2. Fix the positioning of the buttons and price in the movie cards.
+3. Center the 'Pay with card' button in 'My cart' and change the color/styling so it looks like the other ones.
+4. Make color scheme more uniform.
 
 ### Planning, process, problem solving
 
 [Suggested Schedule part 1](https://imgur.com/3B4anof)
+
 [Suggested Schedule part 2](https://imgur.com/pPYFWCA)
+
 [Daily Stand Up Plan](https://imgur.com/h1GQx9o)
 
 As a team, we planned what our project would be by brainstorming our individual ideas until we made a decision. Once we had the general idea of what we wanted to do, we created our user stories, wireframe and ERD. 
