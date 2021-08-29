@@ -25,8 +25,8 @@ class UpdatePurchase extends Component {
       .then((res) => this.setState({ purchase: res.data.purchase[0] }))
       .then(() =>
         msgAlert({
-          heading: 'Show movie success',
-          message: 'Check out the movie',
+          heading: 'Write a review',
+          message: 'Review your movie here',
           variant: 'success'
         })
       )

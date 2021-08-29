@@ -42,13 +42,18 @@ class IndexMoviesUnauth extends Component {
 
 	  let movieJsx
 	  if (movies.length === 0) {
-	    movieJsx = 'No movies'
+	    movieJsx = 'Loading...'
 	  } else {
 	    // I want movieJsx to be a bunch of li or Link or something with all my movies info in them
 	    // .map gives us back a new array that we can display
 	    movieJsx = movies.map((movie) => (
         <Card key={movie.id} style={{ width: '18rem' }}>
-          <Card.Img variant='top' src={movie.imgUrl} />
+          <Card.Img
+            variant='top'
+            style={{ objectFit: 'cover' }}
+            src={movie.imgUrl}
+            height='161'
+          />
           <Card.Body>
             <Card.Title>{movie.title}</Card.Title>
             <Card.Text>{movie.description}</Card.Text>
@@ -59,7 +64,11 @@ class IndexMoviesUnauth extends Component {
 
 	  return (
       <>
-        <h3>Sign in to purchase a movie</h3>
+        <div className='text' style={{ textAlign: 'center' }}>
+          <h4>
+            <strong>Sign in to purchase our movies</strong>
+          </h4>
+        </div>
         <div style={cardContainerLayout}>{movieJsx}</div>
       </>
     )

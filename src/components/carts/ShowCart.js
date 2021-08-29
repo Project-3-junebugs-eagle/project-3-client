@@ -45,8 +45,8 @@ class ShowCart extends Component {
         }))
       .catch((err) =>
         msgAlert({
-          heading: 'Removal failed :(',
-          message: 'Unable to remove the item from your cart: ' + err.message,
+          heading: 'Removal failed',
+          message: 'Unable to remove item from your cart: ' + err.message,
           variant: 'danger'
         })
       )
@@ -72,16 +72,19 @@ class ShowCart extends Component {
 
     let cartJsx
     if (this.state.carts.length === 0) {
-      cartJsx = 'Your cart is currently empty, go add something to your cart.'
+      cartJsx = 'Cart is empty. Go add some movies!'
     } else {
       // I want movieJsx to be a bunch of li or Link or something with all my movies info in them
       // .map gives us back a new array that we can display
       cartJsx = this.state.carts.map((cart) => (
-        <Card key={cart.id} style={{ width: '18rem' }}>
+        <Card key={cart.id} style={{ width: '18rem', marginTop: '40px' }}>
           <Card.Body>
             <Card.Title>{cart.title}</Card.Title>
             <Card.Text>${cart.price}</Card.Text>
-            <Button data-id={cart._id} onClick={this.handleClick}>
+            <Button
+              variant='danger'
+              data-id={cart._id}
+              onClick={this.handleClick}>
 							Remove from cart
             </Button>
           </Card.Body>
@@ -99,8 +102,8 @@ class ShowCart extends Component {
           history={this.props.history}
           user={this.props.user}
           cart={this.state.carts}
-          name={'Thanks for your purchase.'}
-          description={'Please enter your payment information below'}
+          name={'Enter payment information'}
+          description={'Thank you for shopping with us!'}
           amount={sum}
         />
       </div>

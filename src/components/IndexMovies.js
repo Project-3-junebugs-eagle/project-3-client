@@ -29,7 +29,7 @@ class IndexMovies extends Component {
     const { msgAlert } = this.props
     indexMovies()
       .then(res => this.setState({ movies: res.data.movies }))
-      .then(() => msgAlert({ heading: 'Index success', message: 'Here\'s the movies', variant: 'success' }))
+      .then(() => msgAlert({ heading: 'Success', message: 'Here\'s the movies', variant: 'success' }))
       .catch(err => msgAlert({ heading: 'Index failed :(', message: 'Something went wrong: ' + err.message, variant: 'danger' }))
   }
 
@@ -46,7 +46,7 @@ class IndexMovies extends Component {
     addToCart(movieData, user, msgAlert)
       .then(() =>
         msgAlert({
-          heading: 'Item added to cart',
+          heading: 'Item added',
           message: 'Item has been added to your cart.',
           variant: 'success'
         })
@@ -81,14 +81,20 @@ class IndexMovies extends Component {
       // .map gives us back a new array that we can display
       movieJsx = movies.map((movie) => (
         <Card key={movie.id} style={{ width: '18rem' }}>
+          <Card.Img
+            variant='top'
+            style={{ objectFit: 'cover' }}
+            src={movie.imgUrl}
+            height='161'
+          />
           <Card.Body>
-            <Card.Img variant='top' src={movie.imgUrl} />
             <Card.Title>{movie.title}</Card.Title>
             <Card.Text>{movie.description}</Card.Text>
             <Card.Text>
               <strong>${movie.price}</strong>
             </Card.Text>
             <Button
+              variant='btn btn-outline-danger'
               onClick={this.handleClick}
               data-title={movie.title}
               data-description={movie.description}
@@ -102,7 +108,7 @@ class IndexMovies extends Component {
     }
 
     return (
-      <div style={cardContainerLayout}>
+      <div className='movies-text' style={cardContainerLayout}>
         {movieJsx}
       </div>
     )
