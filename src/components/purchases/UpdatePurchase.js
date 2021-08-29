@@ -23,7 +23,6 @@ class UpdatePurchase extends Component {
 
     getPurchase(match.params.id, user)
       .then((res) => this.setState({ purchase: res.data.purchase[0] }))
-      .then(() => console.log(this.state))
       .then(() =>
         msgAlert({
           heading: 'Write a review',

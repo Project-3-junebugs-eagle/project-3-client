@@ -98,6 +98,8 @@ class ShowCart extends Component {
           {cartJsx}
         </div>
         <Checkout
+          msgAlert={this.props.msgAlert}
+          history={this.props.history}
           user={this.props.user}
           cart={this.state.carts}
           name={'Enter payment information'}
