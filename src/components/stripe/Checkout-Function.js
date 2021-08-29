@@ -1,1 +1,0 @@
-import ShowCart from '../carts/ShowCart'

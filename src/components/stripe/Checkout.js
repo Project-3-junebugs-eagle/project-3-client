@@ -6,43 +6,44 @@ import STRIPE_PUBLISHABLE from '../../constants/stripe'
 import PAYMENT_SERVER_URL from '../../constants/server'
 import { createPurchase } from '../../api/purchases'
 import { removeFromCart } from '../../api/cart'
-// import { removeFromCart } from '../../api/cart'
 
 const CURRENCY = 'USD'
 
 const fromEuroToCent = (amount) => amount * 100
 
-const successPayment = (cart, user) => {
-  // console.log('Payment Successful', cart)
-  // let purchaseData = null
-  // let purchaseOwner = null
+const successPayment = (cart, user, msgAlert, history) => {
   let purchaseData
+  let purchaseId
   cart.forEach((purchase) => {
     purchaseData = {
       title: purchase.title,
       description: purchase.description,
       price: purchase.price.toString()
     }
-    console.log(purchaseData, user.token)
+    purchaseId = purchase._id
     createPurchase(purchaseData, user)
-      .then(() => console.log('this works'))
-      .then(() => {
-        console.log(user, cart)
-        let purchaseId
-        cart.forEach((purchase) => {
-          purchaseId = purchase._id
-          removeFromCart(purchaseId, user)
+    removeFromCart(purchaseId, user)
+      .then(() =>
+        msgAlert({
+          heading: 'Item has been purchased',
+          message: 'Go to \'my purchases\' to see your movies.',
+          variant: 'success'
         })
-      })
-    // .catch((err) => console.error(err))
+      )
+      .then(() => history.push('/purchases'))
+      .catch((err) => console.error(err))
   })
 }
 
-const errorPayment = (data) => {
-  console.log('Payment Error')
+const errorPayment = (data, msgAlert) => {
+  msgAlert({
+    heading: 'Payment failed',
+    message: 'Sorry, we were unable to process your payment.',
+    variant: 'danger'
+  })
 }
 
-const onToken = (amount, description, cart, user) => (token) =>
+const onToken = (amount, description, cart, user, msgAlert, history) => (token) =>
   axios
     .post(PAYMENT_SERVER_URL, {
       description,
@@ -50,15 +51,15 @@ const onToken = (amount, description, cart, user) => (token) =>
       currency: CURRENCY,
       amount: fromEuroToCent(amount)
     })
-    .then(() => successPayment(cart, user))
-    .catch(errorPayment)
+    .then(() => successPayment(cart, user, msgAlert, history))
+    .catch(() => errorPayment(msgAlert))
 
-const Checkout = ({ cart, user, name, description, amount }) => {
+const Checkout = ({ cart, user, name, description, amount, msgAlert, history }) => {
   return (<StripeCheckout
     name={name}
     description={description}
     amount={fromEuroToCent(amount)}
-    token={onToken(amount, description, cart, user)}
+    token={onToken(amount, description, cart, user, msgAlert, history)}
     currency={CURRENCY}
     stripeKey={STRIPE_PUBLISHABLE}
   />)
