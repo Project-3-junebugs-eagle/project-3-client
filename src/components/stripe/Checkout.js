@@ -1,3 +1,5 @@
+/* eslint-disable no-tabs */
+/* eslint-disable no-mixed-spaces-and-tabs */
 import React from 'react'
 import axios from 'axios'
 import StripeCheckout from 'react-stripe-checkout'
@@ -9,7 +11,38 @@ import { removeFromCart } from '../../api/cart'
 
 const CURRENCY = 'USD'
 
-const fromEuroToCent = (amount) => amount * 100
+const fromUsdToCent = (amount) => amount * 100
+const Checkout = ({
+  cart,
+  user,
+  name,
+  description,
+  amount,
+  msgAlert,
+  history
+}) => {
+  return (
+    <StripeCheckout
+      name={name}
+      description={description}
+      amount={fromUsdToCent(amount)}
+      token={onToken(amount, description, cart, user, msgAlert, history)}
+      currency={CURRENCY}
+      stripeKey={STRIPE_PUBLISHABLE}
+    />
+  )
+}
+const onToken =
+	(amount, description, cart, user, msgAlert, history) => (token) =>
+	  axios
+	    .post(PAYMENT_SERVER_URL, {
+	      description,
+	      source: token.id,
+	      currency: CURRENCY,
+	      amount: fromUsdToCent(amount)
+	    })
+	    .then(() => successPayment(cart, user, msgAlert, history))
+	    .catch(() => errorPayment(msgAlert))
 
 const successPayment = (cart, user, msgAlert, history) => {
   let purchaseData
@@ -41,28 +74,6 @@ const errorPayment = (data, msgAlert) => {
     message: 'Sorry, we were unable to process your payment.',
     variant: 'danger'
   })
-}
-
-const onToken = (amount, description, cart, user, msgAlert, history) => (token) =>
-  axios
-    .post(PAYMENT_SERVER_URL, {
-      description,
-      source: token.id,
-      currency: CURRENCY,
-      amount: fromEuroToCent(amount)
-    })
-    .then(() => successPayment(cart, user, msgAlert, history))
-    .catch(() => errorPayment(msgAlert))
-
-const Checkout = ({ cart, user, name, description, amount, msgAlert, history }) => {
-  return (<StripeCheckout
-    name={name}
-    description={description}
-    amount={fromEuroToCent(amount)}
-    token={onToken(amount, description, cart, user, msgAlert, history)}
-    currency={CURRENCY}
-    stripeKey={STRIPE_PUBLISHABLE}
-  />)
 }
 
 export default Checkout
