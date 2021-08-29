@@ -72,7 +72,7 @@ class ShowCart extends Component {
 
     let cartJsx
     if (this.state.carts.length === 0) {
-      cartJsx = 'No purchases have been made. Go buy something!'
+      cartJsx = 'Your cart is currently empty, go add something to your cart.'
     } else {
       // I want movieJsx to be a bunch of li or Link or something with all my movies info in them
       // .map gives us back a new array that we can display
@@ -95,6 +95,8 @@ class ShowCart extends Component {
           {cartJsx}
         </div>
         <Checkout
+          msgAlert={this.props.msgAlert}
+          history={this.props.history}
           user={this.props.user}
           cart={this.state.carts}
           name={'Thanks for your purchase.'}

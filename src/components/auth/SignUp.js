@@ -38,7 +38,7 @@ onSignUp = (event) => {
         variant: 'success'
       })
     )
-    .then(() => history.push('/'))
+    .then(() => history.push('/movies'))
     .catch((error) => {
       this.setState({ email: '', password: '', passwordConfirmation: '' })
       msgAlert({
