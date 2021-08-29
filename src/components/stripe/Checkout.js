@@ -25,8 +25,8 @@ const successPayment = (cart, user, msgAlert, history) => {
     removeFromCart(purchaseId, user)
       .then(() =>
         msgAlert({
-          heading: 'Item has been purchased',
-          message: 'Go to \'my purchases\' to see your movies.',
+          heading: 'Purchase successful',
+          message: 'Here are your purchases!',
           variant: 'success'
         })
       )

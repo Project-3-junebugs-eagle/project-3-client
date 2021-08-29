@@ -31,7 +31,7 @@ class IndexPurchase extends Component {
       .then(() =>
         msgAlert({
           heading: 'Refund success',
-          message: 'You should get your money back within 5 business day.',
+          message: 'You should get your money back within 5 business days.',
           variant: 'success'
         })
       )
