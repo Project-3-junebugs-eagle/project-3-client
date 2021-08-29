@@ -32,6 +32,7 @@ After 'buying' a movie, users can get a refund for it. They can also write a rev
 ## Deployed sites
 
 [Front end deployed](https://project-3-junebugs-eagle.github.io/project-3-client/)
+
 [Back end - Heroku](https://git.heroku.com/secure-taiga-59525.git) 
 
 ## Back end and front end repo links
@@ -82,7 +83,9 @@ After 'buying' a movie, users can get a refund for it. They can also write a rev
 ### Planning, process, problem solving
 
 [Suggested Schedule part 1](https://imgur.com/3B4anof)
+
 [Suggested Schedule part 2](https://imgur.com/pPYFWCA)
+
 [Daily Stand Up Plan](https://imgur.com/h1GQx9o)
 
 As a team, we planned what our project would be by brainstorming our individual ideas until we made a decision. Once we had the general idea of what we wanted to do, we created our user stories, wireframe and ERD. 
