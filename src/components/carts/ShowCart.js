@@ -36,7 +36,7 @@ class ShowCart extends Component {
           variant: 'success'
         })
       )
-      .then(() => history.push('/carts'))
+      .then(() => history.push('/cart'))
       .then(() => showCart(user)
         .then((response) => {
           this.setState({
