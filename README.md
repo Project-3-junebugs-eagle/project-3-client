@@ -33,7 +33,7 @@ After 'buying' a movie, users can get a refund for it. They can also write a rev
 
 [Front end deployed](https://project-3-junebugs-eagle.github.io/project-3-client/)
 
-[Back end - Heroku](https://git.heroku.com/secure-taiga-59525.git) 
+[Back end - Heroku](https://secure-taiga-59525.herokuapp.com/) 
 
 ## Back end and front end repo links
 
